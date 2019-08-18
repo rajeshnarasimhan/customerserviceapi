@@ -1,0 +1,36 @@
+# ===================================================================
+# COMMON SPRING BOOT PROPERTIES
+# ===================================================================
+
+# logging configuration
+logging:
+    file: logs/customerservice.log
+    pattern:
+        file: "%d{dd-MM-yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{36}.%M - %msg%n"
+    level:
+        ROOT: INFO
+        com.belong.customerservice: INFO
+
+
+# spring application configurations
+spring:
+    application:
+        name: CustomerService
+    datasource:
+        type: com.zaxxer.hikari.HikariDataSource
+        url: jdbc:h2:mem:customerdb
+        driverClassName: org.h2.Driver
+        username: sa
+        password: password
+    jpa:
+        database-platform: org.hibernate.dialect.H2Dialect
+        database: h2
+        show-sql: false
+        generate-ddl: false
+    h2:
+      console:        enabled: true
+        path: /h2console
+        
+# application port
+server:
+    port: 8181
